@@ -17,11 +17,11 @@ export default function Form1() {
   const [startTime, setStartTime] = React.useState(dayjs("2022-04-07"));
   const [endTime, setEndTime] = React.useState(dayjs("2022-04-07"));
   const [node_type, setNodeType] = React.useState("");
+  const [nodes, setNodes] = React.useState([]);
+  
   const handleNodeTypeChange = (event) => {
     setNodeType(event.target.value);
   };
-  const [btnClicked, setbtnvalue] = React.useState(false);
-  const nodes = [];
   const handleButtonClicked = (event) => {
     const node = {};
     node["node_name"] = node_name;
@@ -29,7 +29,7 @@ export default function Form1() {
     node["properties"] = {};
     node["properties"]["time"] = { starttime: startTime, endtime: endTime };
     node["properties"]["location"] = "";
-    nodes.push(node);
+    setNodes([...nodes, node]);
     console.log(node);
   };
   return (
